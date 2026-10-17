@@ -67,8 +67,9 @@ io.on('connection', socket => {
         try { await liveConnection.disconnect(); } catch {}
         liveConnection = null;
       }
-      const conn = new TikTokLiveConnection(username);
-      attachEvents(conn);
+      const conn = new TikTokLiveConnection(username, {
+  processInitialData: false
+});
       const result = await conn.connect();
       liveConnection = conn;
       connecting = false;
